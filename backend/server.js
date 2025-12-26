@@ -1,12 +1,12 @@
 require("dotenv").config();
-const express =require("express");
-const mongoose=require("mongoose");
+const express = require("express");
+const mongoose= require("mongoose");
 const cors = require("cors");
 
 const app=express();
 
 app.use(cors({
-  origin: "https://car-rental-rk2r.vercel.app/"
+  origin: "https://car-rental-rk2r.vercel.app"
 }));
 
 app.use(express.json());

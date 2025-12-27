@@ -7,7 +7,7 @@ const carSchema = new mongoose.Schema(
 
         type:{
             type: String,
-            enum: ['sedan', 'suv','Hatchback'],
+            enum: ['Sedan', 'suv','Hatchback'],
         },
 
         pricePerDay:{
@@ -15,7 +15,7 @@ const carSchema = new mongoose.Schema(
             required:true,
         },
 
-        location:string,
+        location:String,
 
         isActive:{
             type: Boolean,

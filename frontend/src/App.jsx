@@ -1,5 +1,9 @@
 import { useEffect } from "react";
-
+import Home from "./Screens/Home";
+import Book from "./Screens/Book";
+import Customer from "./Screens/Customer";
+import Login from "./Screens/Login";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -11,9 +15,15 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>Vite + React</h1>
-      <p>Check console for backend response</p>
+    <div> 
+    <BrowserRouter>
+    <Routes>
+        <Route path="/" element = {<Home />} />
+        <Route path="/book" element = {<Book />} />
+        <Route path="/customer" element = {<Customer />} />
+        <Route path="/login" element = {<Login />} />
+    </Routes>
+    </BrowserRouter>
     </div>
   );
 }

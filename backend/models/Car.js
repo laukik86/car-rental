@@ -1,7 +1,15 @@
 const mongoose = require('mongoose');
 
 const carSchema = new mongoose.Schema(
-    {
+    {   
+        registrationNumber: {
+            type: String,
+            required: true,
+            unique: true,
+            uppercase: true, // MH12AB1234
+            trim: true,
+        },
+        
         name:{type: String, required:true},
         brand:String,
 
@@ -15,7 +23,12 @@ const carSchema = new mongoose.Schema(
             required:true,
         },
 
-        location:String,
+        location: {
+            type: String,
+            required: true,
+            lowercase: true,
+            trim: true,
+        },
 
         isActive:{
             type: Boolean,

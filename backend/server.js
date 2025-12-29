@@ -7,9 +7,24 @@ const bookingRoutes = require("./routes/booking.routes");
 
 const app=express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://car-rental-rk2r.vercel.app"
+];
+
 app.use(cors({
-  origin: "https://car-rental-rk2r.vercel.app"
+  origin: function (origin, callback) {
+    // allow requests with no origin (Postman, Thunder Client)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 }));
+
 
 app.use(express.json());
 

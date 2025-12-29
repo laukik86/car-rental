@@ -42,11 +42,10 @@ const bookingSchema = new mongoose.Schema(
 
 bookingSchema.index({ carId: 1, startDate: 1, endDate: 1 });
 
-bookingSchema.pre('save', function(next) {
-    if (this.startDate >= this.endDate) {
-        return next(new Error('End date must be after start date'));
-    }
-    next();
+bookingSchema.pre("save", async function () {
+  if (this.startDate >= this.endDate) {
+    throw new Error("End date must be after start date");
+  }
 });
 
 module.exports = mongoose.model('Booking', bookingSchema);

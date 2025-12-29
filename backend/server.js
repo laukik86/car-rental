@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose= require("mongoose");
 const cors = require("cors");
 const carRoutes = require("./routes/car.routes");
+const bookingRoutes = require("./routes/booking.routes");
 
 const app=express();
 
@@ -22,7 +23,8 @@ app.get("/", (req, res) => {
 
 // Car routes
 app.use("/api/cars", carRoutes);
-
+//booking routes
+app.use("/api/bookings", bookingRoutes);
 
 const PORT=process.env.PORT || 5000;
 app.listen(PORT, () => {

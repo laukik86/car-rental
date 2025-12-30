@@ -3,8 +3,7 @@ import Home from "./Screens/Home";
 import Book from "./Screens/Book";
 import Customer from "./Screens/Customer";
 import Login from "./Screens/Login";
-import Register from "./Screens/Register";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 function App() {
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -27,6 +26,7 @@ function App() {
     </Routes>
     </BrowserRouter>
     </div>
+    
   );
 }
 

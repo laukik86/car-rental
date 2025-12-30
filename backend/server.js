@@ -3,12 +3,36 @@ const express = require("express");
 const mongoose= require("mongoose");
 const cors = require("cors");
 const carRoutes = require("./routes/car.routes");
+
 const authRoutes = require("./routes/auth.routes");
+
+const bookingRoutes = require("./routes/booking.routes");
+
+
 const app=express();
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://car-rental-rk2r.vercel.app"
+];
+
 app.use(cors({
-  origin: [ "https://car-rental-rk2r.vercel.app", "http://localhost:5173" ]
+
+  
+
+  origin: function (origin, callback) {
+    // allow requests with no origin (Postman, Thunder Client)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+
 }));
+
 
 app.use(express.json());
 
@@ -22,8 +46,8 @@ app.get("/", (req, res) => {
 
 // Car routes
 app.use("/api/cars", carRoutes);
-
-app.use("/api/auth", authRoutes);
+//booking routes
+app.use("/api/bookings", bookingRoutes);
 
 const PORT=process.env.PORT || 5000;
 app.listen(PORT, () => {

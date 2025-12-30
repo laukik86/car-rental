@@ -19,7 +19,7 @@ exports.getAllCars = async(req,res)=>{
     }   
 };
 
-// Ger only active cars
+// Get only active cars
 exports.getActiveCars = async(req,res)=>{
     try{
         const cars = await Car.find({isActive:true});

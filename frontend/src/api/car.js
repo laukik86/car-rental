@@ -7,7 +7,7 @@ export const getAvailableCars = async({location, startDate,endDate})=>{
         endDate,
     }).toString();
 
-    const res = await fetch(`${BASE_URL}/cars/available?${query}`);
+    const res = await fetch(`${BASE_URL}/api/cars/available?${query}`);
     if(!res.ok){
         throw new Error("Failed to fetch available cars");
     }
